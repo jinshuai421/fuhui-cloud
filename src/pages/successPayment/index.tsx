@@ -93,11 +93,11 @@ export default defineComponent({
     };
 
     const toHome = () => {
-      VueRouter.push("/?type=" + infoTypeData.typeCode);
+      VueRouter.push("/" + infoTypeData.typeCode);
     };
 
     const toOn = () => {
-      VueRouter.push(`/selectBit?type=${infoTypeData.code}`);
+      VueRouter.push(`/selectBit/${infoTypeData.code}`);
     };
 
     const renderFoot = () => {
@@ -121,7 +121,7 @@ export default defineComponent({
           duration={0}
         >
           <div class={style["p-img"]}>
-            <img src={"http://122.112.206.85" + infoTypeData.shareImage}></img>
+            <img src={location.origin + infoTypeData.shareImage}></img>
           </div>
           <div class={style["p-close"]} onClick={() => (show.value = false)}>
             关闭

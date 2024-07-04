@@ -31,12 +31,15 @@ import { getDoLoginWxApi } from "@/api/login";
 export default defineComponent({
   setup(props, {}) {
     const route = useRoute();
-    const { isEwm, type }: any = route.query;
+    const { type }: any = route.params;
+    const { isEwm }: any = route.query;
     const lightingTypeData = reactive<any>({});
     const priceTypeList = ref<any>([]);
     const seatList = ref<any>([]);
 
     const selectData = ref<any>([]);
+
+    const isDen = ref(true);
 
     const xMax = computed(() => {
       let i = 0;
@@ -71,6 +74,9 @@ export default defineComponent({
       }
       getSecondApi(type).then((res) => {
         Object.assign(lightingTypeData, res);
+        if (["CSLW", "DZPW"].includes(res.typeCode)) {
+          isDen.value = false;
+        }
       });
       getPriceApi(type).then((res) => {
         priceTypeList.value = res;
@@ -160,7 +166,7 @@ export default defineComponent({
         <div class={[style["main"]]}>
           {!!selectData.value.length && (
             <div class={[style["main_h"]]}>
-              {lightingTypeData.icon == "0" ? "已选供灯" : "已选牌位"}
+              {isDen.value ? "已选供灯" : "已选牌位"}
             </div>
           )}
           <div class={[style["main_on"]]}>
@@ -182,9 +188,7 @@ export default defineComponent({
           </div>
           {!!selectData.value.length && (
             <div class={[style["main_h"]]}>
-              {lightingTypeData.icon == "0"
-                ? "供奉时长与心愿"
-                : "供奉时长与逝者姓名"}
+              {isDen.value ? "供奉时长与心愿" : "供奉时长与逝者姓名"}
             </div>
           )}
           <div class={[style["main_ul"]]}>
@@ -285,7 +289,7 @@ export default defineComponent({
                 })}
               </div>
             </div>
-            {lightingTypeData.icon == "0" && (
+            {isDen.value && (
               <div class={[style["popup_c"]]}>
                 <Field
                   v-model={popupData.value.blessing}
@@ -298,7 +302,7 @@ export default defineComponent({
                 />
               </div>
             )}
-            {lightingTypeData.icon == "1" && (
+            {isDen.value && (
               <div class={[style["popup_input"]]}>
                 <div class={[style["popup_input_t"]]}>逝者姓名</div>
                 <Field
@@ -347,7 +351,7 @@ export default defineComponent({
     };
 
     return () => (
-      <Page padding={0} class={style.bgImg} title={lightingTypeData.name}>
+      <Page padding={0} class={style.bgImg} title={lightingTypeData.name} isBack={!isEwm}>
         {renderBit()}
         {renderMain()}
         {renderFoot()}

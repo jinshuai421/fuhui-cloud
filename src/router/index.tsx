@@ -4,14 +4,14 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: "/",
+      path: "/:type",
       name: "首页",
       components: {
         default: () => import("../pages/index/index"),
       },
     },
     {
-      path: "/selectBit",
+      path: "/selectBit/:type",
       name: "选择位",
       components: {
         default: () => import("../pages/selectBit/index"),

@@ -49,7 +49,7 @@ export default defineComponent({
 
     const showPopup = ref(false);
 
-    const { type }: any = route.query;
+    const { type }: any = route.params;
     const { search } = window.location;
     const params: any = new URLSearchParams(search);
     const state = params.get("state") || "";
@@ -89,7 +89,7 @@ export default defineComponent({
         <div class={[style.top]}>
           <img
             class={[style.top_img]}
-            src={"http://122.112.206.85" + typeData.backgroundImage}
+            src={"http://t.sunf.xyz" + typeData.backgroundImage}
           ></img>
           <div class={[style.txt]}>
             <div class={[style.txt_l]}>
@@ -108,7 +108,7 @@ export default defineComponent({
     };
 
     const handleSelect = (data: any) => {
-      VueRouter.push(`/selectBit?type=${data.code}`);
+      VueRouter.push(`/selectBit/${data.code}`);
     };
 
     const renderSelectType = () => {

@@ -44,7 +44,9 @@ export default defineComponent({
     });
 
     const onClick = (e: MouseEvent) => {
-      VueRouter.back();
+      if (props.isBack) {
+        VueRouter.back();
+      }
     };
 
     return () => (
@@ -55,8 +57,8 @@ export default defineComponent({
         }}
       >
         <div class={style["header"]}>
-          {props.isBack && (
-            <div style={"margin-left: 15px"} onClick={onClick}>
+          <div style={"margin-left: 15px;width:12px;"} onClick={onClick}>
+            {props.isBack && (
               <svg
                 width="12"
                 height="24"
@@ -68,11 +70,11 @@ export default defineComponent({
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M10 19.4375L8.95453 20.5L1.28092 12.7014C0.89798 12.3122 0.897981 11.6878 1.28092 11.2986L8.95453 3.5L10 4.5625L2.68173 12L10 19.4375Z"
-                  fill={props.isTransparent ? props.color : "#000" }
+                  fill={props.isTransparent ? props.color : "#000"}
                 />
               </svg>
-            </div>
-          )}
+            )}
+          </div>
           <div
             class={style["title"]}
             style={{ color: props.isTransparent ? props.color : "#000" }}

@@ -61,7 +61,7 @@ export default defineComponent({
                 time={time}
                 format="mm:ss"
                 onFinish={() => {
-                  VueRouter.push(`/selectBit?type=${infoData.code}`);
+                  VueRouter.push(`/selectBit/${infoData.code}`);
                 }}
               />
             </div>
