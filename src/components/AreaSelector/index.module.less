@@ -1,0 +1,34 @@
+.area-selector {
+    --van-tabs-bottom-bar-color:@theme-blue;
+    --van-cascader-active-color:@theme-blue;
+    --van-cascader-header-height:80px;
+
+    .cascader{
+       
+        .header{
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            top: 50px;
+            height: 30px;
+            background-color: #F4F4F4;
+        }
+       
+        
+        :global {
+            .van-cascader__header{
+                position: relative;
+                align-items: flex-start;
+                padding-top: 16px;
+
+            }
+            .van-cascader__title{
+                display:block;
+            }
+
+           
+        }
+    }
+
+
+}

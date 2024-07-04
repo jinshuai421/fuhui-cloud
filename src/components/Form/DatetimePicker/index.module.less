@@ -1,0 +1,26 @@
+.input {
+  width: 165px;
+  height: 40px;
+  background-color: @bg-grey;
+  border-radius: 20px;
+  color: @theme-blue;
+  &--placeholder {
+    color: @neutral-9;
+  }
+}
+
+.datetime {
+  @import '@/assets/css/standard.less';
+  :global {
+    .van-picker-column {
+      .font--t5();
+      &__item {
+        color: @theme-black;
+        &--selected {
+          background-color: @bg-grey;
+          color: @theme-blue;
+        }
+      }
+    }
+  }
+}

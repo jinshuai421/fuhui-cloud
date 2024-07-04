@@ -1,0 +1,21 @@
+.range {
+  @import '@/assets/css/standard.less';
+  &__input {
+    padding-left: @padding-base;
+    padding-right: @padding-base;
+    .font--t5();
+  }
+}
+
+.default {
+  :global {
+    .van-cell {
+      background-color: @bg-grey;
+      border-radius: @border-radius-base;
+    }
+
+    .van-field__control {
+      color: @theme-blue;
+    }
+  }
+}

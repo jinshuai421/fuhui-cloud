@@ -1,0 +1,57 @@
+@import (reference) "@/assets/css/standard.less";
+@import "@/assets/css/oldStandard.less";
+
+.tabbar {
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+
+  :global {
+    .van-tabbar {
+      overflow: hidden;
+      // box-shadow: 0px -1px 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .van-tabbar-item {
+      color: @neutral-9;
+    }
+
+    .van-tabbar-item--active {
+      color: @theme-blue;
+    }
+
+    .van-badge--dot {
+      background-color: @theme-red;
+    }
+  }
+
+  &--simulator {
+    @import (reference) "@/assets/css/standard.less";
+    --van-tabbar-height: 50px;
+
+    :global {
+      .van-tabbar-item__icon{
+        margin-bottom: 0;
+      }
+      .van-tabbar-item__icon img {
+        width: 22px;
+        height: 22px;
+      }
+
+      .van-tabbar-item__text {
+        .font--t3();
+      }
+    }
+  }
+}
+
+:global(@{theme-old}) {
+  :local {
+    .tabbar {
+      :global {
+        .van-tabbar-item__text {
+          .font--t9();
+        }
+      }
+    }
+  }
+}

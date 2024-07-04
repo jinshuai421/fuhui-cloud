@@ -1,0 +1,33 @@
+.card {
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+
+  &_title {
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 500;
+    font-size: 15px;
+    color: #333333;
+    margin-left: 16px;
+    margin-top: 16px;
+    line-height: 16px;
+  }
+  > div {
+    &:not(&:last-child) {
+      :global {
+        .van-cell::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: calc(100% - 32px);
+          left: 0;
+          bottom: 0;
+          margin: 0 16px;
+          border-bottom: 1px solid @hrColor;
+        }
+      }
+    }
+  }
+}

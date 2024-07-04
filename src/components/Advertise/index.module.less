@@ -1,0 +1,21 @@
+.advertise {
+  .swipe {
+    height: 210px;
+    img {
+      object-fit: cover;
+    }
+  }
+
+  :global {
+    .van-swipe__indicator:not(:last-child) {
+      margin-right: 4px !important;
+    }
+  }
+}
+
+:root {
+  // --van-swipe-indicator-margin: 102px !important;
+  --van-swipe-indicator-size: 8px !important;
+  --van-swipe-indicator-active-opacity: 0.51 !important;
+  --van-swipe-indicator-inactive-opacity: 0.51 !important;
+}

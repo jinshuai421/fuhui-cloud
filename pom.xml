@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- 项目组织机构 -->
+	<groupId>cn.com.ztesa</groupId>
+	<!-- 项目名称 -->
+	<artifactId>fuhui-cloud</artifactId>
+
+	<!-- 项目名称 -->
+	<name>${project.artifactId}</name>
+	<!-- 项目版本号 -->
+ 	<version>1.0.0.0</version>Fuhui Cloud
+
+	<properties>
+		<!-- 远程打包服务器 -->
+		<docker.host>unix:///var/run/docker.sock</docker.host>
+		<!-- Docker 仓库地址 -->
+		<docker.registry>hub.ztesa.work</docker.registry>
+		<!-- Docker 仓库命名空间 -->
+		<docker.namespace>ztesa</docker.namespace>
+		<!-- Docker 仓库账号 -->
+		<docker.username>sunfei</docker.username>
+		<!-- Docker 仓库密码 -->
+		<docker.password>Qq123456</docker.password>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.33.0</version>
+				<!-- 全局配置 -->
+				<configuration>
+					<!-- docker主机地址,用于完成docker各项功能,注意是tcp不是http! -->
+					<dockerHost>${docker.host}</dockerHost>
+					<!-- registry地址,用于推送,拉取镜像,我这里用的是阿里的registry -->
+					<registry>${docker.registry}</registry>
+					<images>
+						<image>
+							<!-- 镜像名(含版本号) -->
+							<name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>
+							<!--镜像build相关配置-->
+							<build>
+								<!--使用dockerFile文件-->
+								<dockerFile>${project.basedir}/Dockerfile</dockerFile>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<!-- 直接进入华为云的SWR -->
+				<docker.registry>swr.cn-east-3.myhuaweicloud.com</docker.registry>
+				<docker.namespace>ztesa</docker.namespace>
+				<docker.username>cn-east-3@G2KJ0ZUPTPUIDSAPS8VZ</docker.username>
+				<docker.password>a1808714971aa582fa8a80a12d52f10d201eebba3869cc35854bcf41446a3660</docker.password>
+				<profiles.active>huawei</profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

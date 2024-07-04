@@ -1,0 +1,40 @@
+.tabbar {
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+
+  :global {
+    .van-tabbar {
+      overflow: hidden;
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0px -3px 10px rgba(@shadow-grey, 0.2);
+
+
+    }
+    .van-tabbar-item {
+      color: @theme-grey;
+    }
+    .van-tabbar-item--active {
+      color: @theme-blue;
+    }
+
+    .van-badge--dot {
+      background-color: @theme-red;
+    }
+  }
+
+  &--simulator {
+    @import (reference) '@/assets/css/standard.less';
+    --van-tabbar-height:50px;
+    :global{
+      .van-tabbar-item__icon img{
+        width: 20px;
+        height:20px;
+      }
+
+      .van-tabbar-item__text{
+        .font--t5();
+      }
+    }
+   
+  }
+}

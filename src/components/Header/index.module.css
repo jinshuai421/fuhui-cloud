@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  font-size: 18px;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.header > div:first-child,
+.header > div:nth-child(3) {
+  width: 50px;
+  padding: 0 15px;
+}

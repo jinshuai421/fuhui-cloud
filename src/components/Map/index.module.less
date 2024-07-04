@@ -1,0 +1,86 @@
+.button {
+  padding: 6px;
+  width: 45px;
+  height: 45px;
+  background-color: @white;
+  border-radius: @border-radius-base;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__text {
+  }
+}
+
+.fullscreen {
+  position: absolute;
+  z-index: 99;
+  bottom: 10px;
+  right: 10px;
+}
+
+.icon {
+  &--1 {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+.map {
+  &__triangle {
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-top: 4px solid @theme-blue;
+    border-left: 2.5px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 2.5px solid transparent;
+
+    &--n3 {
+      margin: auto;
+      width: 0;
+      height: 0;
+      border-top: 4px solid @neutral-3;
+      border-left: 2.5px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-right: 2.5px solid transparent;
+    }
+  }
+
+  &__label {
+  }
+
+  &__icon {
+    &--1 {
+      width: 20px;
+      height: 18px;
+    }
+  }
+
+  &__clear {
+    div[draggable='false'] + div {
+      & > div {
+        overflow: visible !important;
+      }
+    }
+
+    div[draggable='true'] + div {
+      & > div {
+        overflow: visible !important;
+      }
+    }
+  }
+}
+
+:global(@{theme-old}) {
+  .map {
+    &__icon {
+      &--1 {
+        width: 30px;
+        height: 27px;
+      }
+    }
+  }
+}

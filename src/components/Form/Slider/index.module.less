@@ -1,0 +1,29 @@
+.input {
+  :global {
+    @import '@/assets/css/standard.less';
+    .van-cell {
+      padding: 0;
+    }
+
+    .van-field__control {
+      flex: 1;
+      height: 40px;
+      border-radius: 20px;
+      .font--t5();
+      text-align: center;
+      background-color: @bg-grey;
+      color: @theme-black;
+    }
+  }
+}
+
+.slider {
+  &__btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-image: url(./assets/btn.png);
+    background-size: 100%;
+  
+  }
+}

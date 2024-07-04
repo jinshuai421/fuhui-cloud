@@ -1,0 +1,30 @@
+html,
+body,
+#app {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  overflow-y: hidden;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+.app {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#content {
+  height: 100%;
+}
+@import "./assets/css/standard.less";
+@import "./assets/css/tailwind.less";
+// 有赞样式修改
+@import "./assets/css/vant.less";
+
+@import "./assets/css/business.less";
+
+:root {
+  --van-overlay-background-color: rgba(0, 0, 0, 0.4) !important;
+}

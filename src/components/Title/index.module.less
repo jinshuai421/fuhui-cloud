@@ -1,0 +1,27 @@
+.title-assembly {
+  width: 100%;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 800;
+  font-size: 16px;
+  color: #333333;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  > span {
+    position: relative;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      width: 3px;
+      height: 16px;
+      background: #0dbda8;
+      border-radius: 2px 2px 2px 2px;
+      display: block;
+      margin-right: 8px;
+    }
+  }
+}

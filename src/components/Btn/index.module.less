@@ -1,0 +1,51 @@
+.btnContainer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+  height: 68px;
+  background: #ffffff;
+  box-shadow: 0px -3px 10px rgba(175, 175, 175, 0.2);
+  border-radius: 16px 18px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px 0;
+
+  .btnListItem {
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #2665fa 0%, #80a5ff 100%);
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: PingFang SC;
+    font-weight: bold;
+  }
+
+  //数组长度为1时
+  .btnListItem1 {
+    width: 100%;
+  }
+
+  //数组长度为2时
+  .btnListItem2:nth-child(1) {
+  margin-right: 7.5px;
+  background: rgba(38, 101, 250, 0.2);
+}
+
+  .btnListItem2:nth-child(2) {
+    margin-right: 0;
+    margin-left: 7.5px;
+  }
+
+  .colours1 {
+    color: #2665fa;
+  }
+
+  .colours2 {
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,33 @@
+.histor {
+  font-family: PingFang SC-Bold, PingFang SC;
+
+  &_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > div:first-child {
+      color: @neutral-3;
+      font-weight: bold;
+    }
+
+    & > div:last-child {
+      width: 16px;
+      height: 16px;
+      display: block;
+      background-image: url("./assets/icon_del.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .list {
+    span {
+      color: @neutral-3;
+      padding: 4px 10px;
+      border-radius: 30px;
+      background: @white;
+      display: inline-block;
+    }
+  }
+}

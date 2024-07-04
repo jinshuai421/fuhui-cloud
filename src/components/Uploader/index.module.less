@@ -1,0 +1,131 @@
+.label {
+  width: 100%;
+}
+
+.uploader {
+  // border-bottom: 1px solid @border-grey;
+
+  &--image {
+    --van-uploader-size: 72px;
+
+    :global {
+      .van-uploader {
+        &__wrapper {
+          &--disabled {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &--file {
+    @import (reference) "@/assets/css/standard.less";
+
+    :global {
+      .van-uploader {
+        display: block;
+
+        &__wrapper {
+          display: block;
+        }
+
+        &__input-wrapper {
+          width: max-content;
+        }
+
+        &__file {
+          width: 100%;
+          height: max-content;
+          flex-direction: row;
+          justify-items: flex-start;
+          background: none;
+
+          &-name {
+            margin-top: 0;
+            text-align: left;
+            .font--t5();
+            color: @theme-blue;
+          }
+        }
+
+        &__preview-delete {
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+          text-align: center;
+          border-radius: 9px;
+          background: none;
+          background-image: url(./images/close.png);
+          background-size: 100%;
+
+          &-icon {
+            position: static;
+            transform: none;
+          }
+        }
+      }
+
+      .van-icon-description:before {
+        content: none;
+      }
+    }
+  }
+
+  :global {
+    .van-uploader {
+      &__wrapper {
+
+        &_preview {
+          // width: 25% !important;
+
+        }
+      }
+
+      &__preview-image {
+        // width: 100% !important;
+        // height: 100% !important;
+      }
+    }
+
+  }
+}
+
+.button {
+  &--image {
+    width: 72px;
+    height: 72px;
+    background-color: @bg-grey;
+  }
+
+  &--file {
+    height: 45px;
+  }
+}
+
+.img {
+  &--1 {
+    width: 30px;
+    height: 30px;
+  }
+
+  &--2 {
+    width: 18px;
+    height: 15px;
+  }
+}
+
+.closeIcon {
+  margin: 5px;
+  width: 16px;
+  height: 16px;
+}
+
+.uploadBox {
+  background-color: #f7f8fa;
+
+  img {
+    width: 52px;
+    height: 38px;
+  }
+}

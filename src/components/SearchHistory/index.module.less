@@ -1,0 +1,54 @@
+.label {
+  &__item {
+    margin-top: @margin-base;
+    margin-right: @margin-base;
+    padding: 2px @padding-base;
+    width: max-content;
+    height: 24px;
+    border-radius: 12px;
+    background-color: @bg-grey;
+  }
+
+  &__close {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: @white;
+  }
+}
+
+.icon {
+  &--delete {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--close {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.title {
+  font-weight: 700;
+}
+.prompt-box{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #999;
+  img{
+    width: 170px;
+    height: 100px;
+  }
+
+}

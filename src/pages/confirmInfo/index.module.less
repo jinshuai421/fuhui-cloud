@@ -1,0 +1,228 @@
+@import "@/assets/css/oldStandard.less";
+
+.bgImg {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 70px !important;
+}
+
+.top {
+  background-image: url("./assets/bg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 172px;
+  padding: 0 13px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -50px;
+  &-l {
+    font-family: PingFang SC;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16.8px;
+    text-align: left;
+    margin-top: 90px;
+
+    color: #fff;
+    :global {
+      .van-count-down {
+        font-family: PingFang SC;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 44.8px;
+        text-align: left;
+        color: #fff;
+      }
+    }
+  }
+
+  &-r {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16.8px;
+    text-align: left;
+    margin-top: 112px;
+  }
+}
+
+.blessing {
+  padding: 12px;
+  border-radius: 8px;
+  margin: -15px 12.5px 0;
+  background-color: #fff;
+  &-li {
+    &:not(&:first-child) {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #cd63111a;
+    }
+    &-t {
+      display: flex;
+      justify-content: space-between;
+      font-family: Songti SC;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 22.4px;
+      text-align: left;
+      color: #000;
+      > div:first-child {
+        display: flex;
+      }
+      > div:first-child::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background-image: url(./assets/lamp.png);
+        background-size: 100% 100%;
+        display: block;
+        margin-top: 2px;
+        margin-right: 1px;
+      }
+    }
+    &-b {
+      margin-top: 10px;
+      display: flex;
+      font-family: PingFang SC;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16.8px;
+      text-align: right;
+      color: #666;
+      > p {
+        flex-shrink: 0;
+      }
+      > p:first-child {
+        margin-right: 10px;
+      }
+      > p:last-child {
+        max-width: 264px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.card {
+  margin: 12px 12.5px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.form {
+  .input {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    > div:first-child {
+      flex-shrink: 0;
+      width: 50px;
+      font-family: PingFang SC;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      color: #000;
+    }
+
+    :global {
+      .van-field {
+        height: 40px;
+        padding: 10px;
+        border-radius: 8px;
+        background: #f8f8f8;
+      }
+    }
+  }
+  &_check {
+    margin-left: 50px;
+    margin-top: 12px;
+    color: #fff;
+
+    :global {
+      .van-checkbox__label {
+        color: #666;
+      }
+      .van-checkbox__icon {
+        background-color: rgba(217, 217, 217, 0.1);
+        border-color: #d6d6d6;
+      }
+    }
+  }
+}
+
+.notes {
+  &-c {
+    padding-top: 10px;
+    font-family: PingFang SC;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #666;
+  }
+}
+
+.foot {
+  padding: 2px 12px 11px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: @bgColor;
+  > div {
+    &:first-child {
+      display: flex;
+      align-items: center;
+      width: 172px;
+      height: 44px;
+      font-family: PingFang SC;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 19.6px;
+      text-align: left;
+      color: #d0a17d;
+      > span {
+        font-family: PingFang SC;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        text-align: left;
+      }
+    }
+    &:last-child {
+      background-color: #d0a17d;
+      width: 172px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: PingFang SC;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 20px;
+    }
+  }
+}
+
+.h3 {
+  font-family: Songti SC;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 22.4px;
+  text-align: left;
+  color: #000;
+}
+
+.border_b {
+  border-bottom: 1px solid #cd63111a;
+  padding-bottom: 8px;
+}

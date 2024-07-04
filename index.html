@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title></title>
+    <script src="./headerLoad.js"></script>
+    <!-- Main library -->
+    <!-- <script src="./three/three.min.js"></script> -->
+
+    <!-- Helpers -->
+    <!-- <script src="./three/projector.js"></script> -->
+    <!-- <script src="./three/canvas-renderer.js"></script> -->
+    <!-- <script src="//res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script> -->
+    <script src="/weixin.js"></script>
+    <!-- 聊天 -->
+    <!-- <script src="//im.ztesa.com.cn/timTool.js.umd.js"></script> -->
+    <!-- <script src="./timTool.js.umd.js"></script> -->
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+
+    <!-- Animated background color -->
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
+    <!-- <script src="./three/color.js"></script> -->
+
+    <!-- 腾讯地图 -->
+    <!-- <script src="https://map.qq.com/api/js?v=2.exp&key=YXUBZ-TYHK5-5VXII-QX555-DGFWK-DGBMB"></script>
+    <script src="https://mapapi.qq.com/web/mapComponents/geoLocation/v/geolocation.min.js"></script> -->
+
+    <!-- 高德地图-->
+    <script src="/amap.js"></script>
+
+    <!-- <script src="//webapi.amap.com/maps?v=1.4.5&key=575f48d9b40968e2974131dc2c7f1f36&plugin=AMap.Geolocation"></script> -->
+    <!-- <script src="//webapi.amap.com/maps?v=2.0&key=bc568ce51938e326ae79dc4e8c8dc155	&plugin=AMap.MarkerCluster,AMap.AutoComplete"></script> -->
+    <script src="./headerLoad.js"></script>
+    <!-- 浙里办jssdk -->
+    <!-- <script type="text/javascript" src="//assets.zjzwfw.gov.cn/assets/ZWJSBridge/1.1.0/zwjsbridge.js"></script> -->
+
+    <!-- moment -->
+    <script src="https://cdn.bootcss.com/moment.js/2.29.1/moment.min.js"></script>
+
+    <!-- hls.js -->
+    <script src="/hls.js"></script>
+    <!-- <script src="https://cdn.ztesa.com.cn/hls.js@1.1.1/hls.min.js"></script> -->
+    <!-- <script src="https://apis.map.qq.com/tools/geolocation/min?key=YXUBZ-TYHK5-5VXII-QX555-DGFWK-DGBMB&referer=天台农业现代园区"></script> -->
+    <!-- 加密 -->
+    <script src="/crypto.js"></script>
+    <script src="/sm2.js"></script>
+    <script src="/security.js"></script>
+    <script src="/h5player/h5player.min.js"></script>
+    
+    <!-- 
+  <script src="https://js.fundebug.cn/fundebug.2.8.0.min.js"
+    apikey="04e312d84657b099eea65da6d608325c26e7b6969f0e3c48bff436567cd5f115" setHttpBody="true"
+    crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js"></script> -->
+
+    <style>
+      @font-face {
+        font-family: ZhenyanGB;
+        src: url("./zhenyan.otf");
+      }
+
+      /* 隐藏高德底部logo与文字 */
+      .amap-logo {
+        display: none;
+        opacity: 0 !important;
+      }
+
+      .amap-copyright {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

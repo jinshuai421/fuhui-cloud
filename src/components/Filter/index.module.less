@@ -1,0 +1,72 @@
+.filter {
+  padding: @padding-base;
+  border-radius: 0 0 16px 16px;
+  background-color: @white;
+}
+
+.operate {
+  border-top: 1px solid @border-grey;
+}
+
+.btn {
+  // line-height: 40px;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 1000px;
+
+  &__reset {
+    width: 105px;
+    background-color: @bg-grey;
+  }
+
+  &__check {
+    background-image: linear-gradient(to right, @theme-blue, @theme-blue-light);
+  }
+}
+
+.options {
+  &__item {
+    // padding:10px 24px ;
+    // width: max-content;
+    width: 75px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50px;
+    color: @theme-black;
+    background-color: @bg-grey;
+
+    &--empty {
+      width: 75px;
+    }
+  }
+}
+
+.input {
+  :global {
+    @import (reference) '@/assets/css/standard.less';
+    .van-cell {
+      padding: 0;
+    }
+
+    .van-field__control {
+      flex: 1;
+      height: 40px;
+      border-radius: 20px;
+      .font--t5();
+      text-align: center;
+      background-color: @bg-grey;
+      color: @theme-black;
+    }
+  }
+}
+
+.slider {
+  &__btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-image: url(./assets/btn.png);
+    background-size: 100%;
+  }
+}

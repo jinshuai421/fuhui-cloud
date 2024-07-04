@@ -1,0 +1,32 @@
+.default {
+  border-bottom: 1px solid @border-grey;
+
+  :global {
+    .van-field {
+      padding: 17px 0;
+    }
+    .van-field__label {
+      color: @theme-grey;
+    }
+    .van-field__control {
+      color: @theme-black;
+    }
+
+    .van-field__label--required {
+      &::before {
+        content: '';
+      }
+
+      &::after {
+        content: '*';
+        color: @theme-red;
+        font-weight: bold;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  &__unit {
+    color: @theme-grey;
+  }
+}

@@ -1,0 +1,114 @@
+@import "@/assets/css/oldStandard.less";
+
+.bgImg {
+  background-image: url("./assets/bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 50px !important;
+  // background: linear-gradient(
+  //   30deg,
+  //   #d7ebfe 0%,
+  //   #eef7fd 20%,
+  //   #f0f9fd 30%,
+  //   #cce3ff 100%
+  // );
+}
+.top {
+  padding-bottom: 35px;
+  box-sizing: border-box;
+  // background-image: url(./assets/bg.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  padding-top: 100px;
+}
+
+.title1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #333333;
+}
+
+.title2 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333333;
+  margin-top: 10px;
+  position: relative;
+  > span {
+    position: relative;
+  }
+
+  > i {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 143px;
+    height: 8px;
+    background: linear-gradient(78deg, #0DBDA8 0%, rgba(13, 189, 168, 0) 100%);
+  }
+}
+
+.main {
+  margin: 25px 30px;
+
+  .input {
+    width: 315px;
+    height: 50px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    i {
+      width: 20px;
+      height: 20px;
+      background-image: url(./assets/icon_user.png);
+      background-size: 100% 100%;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    .password {
+      background-image: url(./assets/icon_yzm.png);
+    }
+
+    .verification {
+      font-weight: 400;
+      font-size: 15px;
+      color: #b2b2b2;
+      margin-left: 10px;
+      white-space: nowrap;
+      text-align: right;
+      flex: 1;
+    }
+    .on {
+      color: #0DBDA8;
+    }
+
+    input {
+      font-size: 15px;
+      color: #4d4d4d;
+
+      &::placeholder {
+        color: #999999;
+      }
+    }
+  }
+
+  .login {
+    width: 315px;
+    height: 44px;
+    background: linear-gradient(90deg, #00c8c8 0%, #0ab5a2 100%);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
