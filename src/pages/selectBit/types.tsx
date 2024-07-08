@@ -20,7 +20,7 @@ export const selectConfig = [
 ];
 
 export const svgIcon = (color: string, size = 24, type = 0) => {
-  if (type == 1) {
+  if (type == 0) {
     return (
       <svg
         width={size}

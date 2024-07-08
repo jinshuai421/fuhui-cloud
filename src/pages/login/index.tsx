@@ -107,7 +107,7 @@
 //           <div class={style["title1"]}>您好</div>
 //           <div class={style["title2"]}>
 //             <i></i>
-//             <span>欢迎使用福慧云</span>
+//             <span>欢迎使用华陵云</span>
 //           </div>
 //         </div>
 

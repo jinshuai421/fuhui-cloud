@@ -14,12 +14,13 @@ import Router, { getCurrentRouter } from "@/router/index";
 import { Col, Row, Icon, Popup, Toast, Field, Checkbox } from "vant";
 import { defineComponent, reactive, onMounted, ref } from "vue";
 import { selectConfig, svgClose, svgIcon, svgSelectOn } from "./types";
-import { getOrderInfoApi, getSecondApi } from "@/api";
+import { getConfigApi, getOrderInfoApi, getSecondApi } from "@/api";
 import { useRoute } from "vue-router";
 
 export default defineComponent({
   setup(props, {}) {
     const infoData = reactive<any>({});
+    const typeData = reactive<any>({});
     const infoTypeData = reactive<any>({});
     const route = useRoute();
     const { orderId, type } = route.query;
@@ -27,6 +28,9 @@ export default defineComponent({
     onMounted(() => {
       getSecondApi(type).then((res) => {
         Object.assign(infoTypeData, res);
+        getConfigApi(res.typeCode || type).then((res) => {
+          Object.assign(typeData, res);
+        });
       });
 
       getOrderInfoApi(orderId).then((res) => {
@@ -52,7 +56,7 @@ export default defineComponent({
               <div class={[style["info-li"]]}>
                 <div>
                   <span>祈福内容</span>
-                  <span class={[style.bold]}>{infoTypeData.name}</span>
+                  <span class={[style.bold]}>{infoTypeData}</span>
                 </div>
                 <div>
                   <span>供奉时长</span>
@@ -71,6 +75,22 @@ export default defineComponent({
               </div>
             );
           })}
+          {infoData.code === "GDX" && (
+            <div class={[style["info-li"]]}>
+              <div>
+                <span>祈福内容</span>
+                <span class={[style.bold]}>{typeData.name}</span>
+              </div>
+              <div>
+                <span>合计金额</span>
+                <span>￥{infoData.orderPrice.toFixed(2)}</span>
+              </div>
+              <div>
+                <span>祈福心愿</span>
+                <span>{infoData.blessing}</span>
+              </div>
+            </div>
+          )}
           <div class={style.price}>
             合计:
             <span>￥{(infoData.orderPrice || 0).toFixed(2)}</span>
@@ -121,7 +141,12 @@ export default defineComponent({
           duration={0}
         >
           <div class={style["p-img"]}>
-            <img src={location.origin + infoTypeData.shareImage}></img>
+            <img
+              src={
+                location.origin +
+                (infoTypeData.shareImage || typeData.shareImage)
+              }
+            ></img>
           </div>
           <div class={style["p-close"]} onClick={() => (show.value = false)}>
             关闭

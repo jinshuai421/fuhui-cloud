@@ -74,7 +74,7 @@ export default defineComponent({
       }
       getSecondApi(type).then((res) => {
         Object.assign(lightingTypeData, res);
-        if (["CSLW", "DZPW"].includes(res.typeCode)) {
+        if (res.fillType == "1") {
           isDen.value = false;
         }
       });
@@ -142,9 +142,9 @@ export default defineComponent({
                                 {svgIcon(
                                   is
                                     ? "#BC1919"
-                                    : obj.isUse == 1
-                                    ? "#ccc"
-                                    : "#D0A17D",
+                                    : obj.inUse == 0
+                                    ? "#D0A17D"
+                                    : "#ccc",
                                   351 / xMax.value > 24 ? 24 : 351 / xMax.value,
                                   lightingTypeData.icon
                                 )}
@@ -166,7 +166,7 @@ export default defineComponent({
         <div class={[style["main"]]}>
           {!!selectData.value.length && (
             <div class={[style["main_h"]]}>
-              {isDen.value ? "已选供灯" : "已选牌位"}
+              {lightingTypeData.icon == "1" ? "已选供灯" : "已选牌位"}
             </div>
           )}
           <div class={[style["main_on"]]}>
@@ -302,7 +302,7 @@ export default defineComponent({
                 />
               </div>
             )}
-            {isDen.value && (
+            {!isDen.value && (
               <div class={[style["popup_input"]]}>
                 <div class={[style["popup_input_t"]]}>逝者姓名</div>
                 <Field
@@ -351,7 +351,12 @@ export default defineComponent({
     };
 
     return () => (
-      <Page padding={0} class={style.bgImg} title={lightingTypeData.name} isBack={!isEwm}>
+      <Page
+        padding={0}
+        class={style.bgImg}
+        title={lightingTypeData.name}
+        isBack={!isEwm}
+      >
         {renderBit()}
         {renderMain()}
         {renderFoot()}

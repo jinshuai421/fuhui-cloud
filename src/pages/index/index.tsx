@@ -89,14 +89,17 @@ export default defineComponent({
         <div class={[style.top]}>
           <img
             class={[style.top_img]}
-            src={"http://t.sunf.xyz" + typeData.backgroundImage}
+            src={location.origin + typeData.backgroundImage}
           ></img>
           <div class={[style.txt]}>
             <div class={[style.txt_l]}>
               <div>{typeData.name}</div>
               <div class={style.txt_b}>
-                {typeData.introduce}
-                <div class={[style.txt_a]}>
+                <div>{typeData.introduce}</div>
+                <div
+                  class={[style.txt_a]}
+                  onClick={() => (showIntroduce.value = true)}
+                >
                   <span>查看介绍</span>
                   {svgArrowR()}
                 </div>
@@ -431,6 +434,31 @@ export default defineComponent({
       );
     };
 
+    const showIntroduce = ref(false);
+
+    const renderIntroducePopup = () => {
+      return (
+        <Popup
+          v-model:show={showIntroduce.value}
+          position="bottom"
+          round
+          duration={0}
+          class={[style.popup]}
+        >
+          <div class={[style["popup_t"]]}>
+            介绍
+            <div
+              class={[style["popup_close"]]}
+              onClick={() => (showPopup.value = false)}
+            >
+              {svgClose()}
+            </div>
+          </div>
+          <div class={[style.introduce]}>{typeData.introduce}</div>
+        </Popup>
+      );
+    };
+
     const renderContent = () => {
       switch (typeData.code) {
         case "GDX":
@@ -468,6 +496,7 @@ export default defineComponent({
       >
         {renderTopContent()}
         {renderContent()}
+        {renderIntroducePopup()}
       </Page>
     );
   },

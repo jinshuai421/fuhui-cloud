@@ -12,7 +12,7 @@ export const initTitle = () => {
 };
 
 export const getTitleText = () => {
-  return "福慧云";
+  return "华陵云";
 };
 
 export const getCopyrightText = () => {
