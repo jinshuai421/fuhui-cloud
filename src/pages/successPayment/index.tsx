@@ -113,10 +113,14 @@ export default defineComponent({
     };
 
     const toHome = () => {
-      VueRouter.push("/" + infoTypeData.typeCode);
+      VueRouter.push("/" + (infoTypeData.typeCode || infoData.code));
     };
 
     const toOn = () => {
+      if (infoData.code === "GDX") {
+        toHome();
+        return;
+      }
       VueRouter.push(`/selectBit/${infoTypeData.code}`);
     };
 

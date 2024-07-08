@@ -87,11 +87,13 @@ export default defineComponent({
     });
 
     const handleSelect = (data: any) => {
-      const i = selectData.value.findIndex((e: any) => e.id == data.id);
-      if (i > -1) {
-        selectData.value.splice(i, 1);
-      } else {
-        selectData.value.push(data);
+      if (data.inUse == 0) {
+        const i = selectData.value.findIndex((e: any) => e.id == data.id);
+        if (i > -1) {
+          selectData.value.splice(i, 1);
+        } else {
+          selectData.value.push(data);
+        }
       }
     };
 

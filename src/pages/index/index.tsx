@@ -449,7 +449,7 @@ export default defineComponent({
             介绍
             <div
               class={[style["popup_close"]]}
-              onClick={() => (showPopup.value = false)}
+              onClick={() => (showIntroduce.value = false)}
             >
               {svgClose()}
             </div>
