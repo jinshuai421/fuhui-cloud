@@ -4,14 +4,14 @@ import { postAction, getAction } from "@/command/netTool";
  * @description 用户信息查询
  */
 export const getConfigApi = (code: any) => {
-  return getAction(`/api/temple/config/${code}`);
+  return getAction(`/api/temple/config/${code}`, {}, { type: code });
 };
 
 /**
  * @description 二级分类详情
  */
 export const getSecondApi = (code: any) => {
-  return getAction(`/api/temple/second/${code}`);
+  return getAction(`/api/temple/second/${code}`, {}, { type: code });
 };
 /**
  * @description 供奉类型的价格清单

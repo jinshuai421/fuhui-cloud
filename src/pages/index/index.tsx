@@ -49,7 +49,7 @@ export default defineComponent({
 
     const showPopup = ref(false);
 
-    const { type }: any = route.params;
+    const { type }: any = route.query;
     const { search } = window.location;
     const params: any = new URLSearchParams(search);
     const state = params.get("state") || "";
@@ -111,7 +111,7 @@ export default defineComponent({
     };
 
     const handleSelect = (data: any) => {
-      VueRouter.push(`/selectBit/${data.code}`);
+      VueRouter.push(`/selectBit?type=${data.code}`);
     };
 
     const renderSelectType = () => {
@@ -364,14 +364,55 @@ export default defineComponent({
         ...formData,
       };
       setCreateOrderApi(params).then((res) => {
-        setPayOrderApi({
-          ...params,
-          orderId: res.id,
-          orderCode: res.orderCode,
-        }).then((e) => {
-          showPopup.value = false;
-          VueRouter.push(`/successPayment?orderId=${res.id}&type=${type}`);
-        });
+        setTimeout(() => {
+          setPayOrderApi({
+            ...params,
+            orderId: res.id,
+            orderCode: res.orderCode,
+          }).then((e) => {
+            function onBridgeReady() {
+              WeixinJSBridge.invoke(
+                "getBrandWCPayRequest",
+                {
+                  ...e,
+                },
+                function (res: any) {
+                  if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    // 使用以上方式判断前端返回,微信团队郑重提示：
+                    //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                    showPopup.value = false;
+                    VueRouter.push(
+                      `/successPayment?orderId=${res.id}&type=${type}`
+                    );
+                  }
+                  if (res.err_msg == "get_brand_wcpay_request:fail") {
+                    Toast("支付失败");
+                  }
+                }
+              );
+            }
+            if (typeof WeixinJSBridge == "undefined") {
+              if ((document as any).addEventListener) {
+                (document as any).addEventListener(
+                  "WeixinJSBridgeReady",
+                  onBridgeReady,
+                  false
+                );
+              } else if ((document as any).attachEvent) {
+                (document as any).attachEvent(
+                  "WeixinJSBridgeReady",
+                  onBridgeReady
+                );
+                (document as any).attachEvent(
+                  "onWeixinJSBridgeReady",
+                  onBridgeReady
+                );
+              }
+            } else {
+              onBridgeReady();
+            }
+          });
+        }, 500);
       });
     };
 

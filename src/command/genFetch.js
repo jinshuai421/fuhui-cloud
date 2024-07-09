@@ -175,6 +175,7 @@ export default function (url, params, config = {}) {
             localStorage.setItem("reorderUrl", location.href);
             location.href = res;
           });
+          return
         }
         if (e.code == 400) {
           Toast.fail(e.msg);

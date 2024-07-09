@@ -31,8 +31,7 @@ import { getDoLoginWxApi } from "@/api/login";
 export default defineComponent({
   setup(props, {}) {
     const route = useRoute();
-    const { type }: any = route.params;
-    const { isEwm }: any = route.query;
+    const { type,isEwm }: any = route.query;
     const lightingTypeData = reactive<any>({});
     const priceTypeList = ref<any>([]);
     const seatList = ref<any>([]);

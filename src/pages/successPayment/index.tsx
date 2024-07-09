@@ -113,7 +113,7 @@ export default defineComponent({
     };
 
     const toHome = () => {
-      VueRouter.push("/" + (infoTypeData.typeCode || infoData.code));
+      VueRouter.push("/?type=" + (infoTypeData.typeCode || infoData.code));
     };
 
     const toOn = () => {
@@ -121,7 +121,7 @@ export default defineComponent({
         toHome();
         return;
       }
-      VueRouter.push(`/selectBit/${infoTypeData.code}`);
+      VueRouter.push(`/selectBit?type=${infoTypeData.code}`);
     };
 
     const renderFoot = () => {

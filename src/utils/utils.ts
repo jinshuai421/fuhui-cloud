@@ -212,7 +212,7 @@ export const getPhoneNumbe = function (phone: any) {
 export function getAmountChinese(val: any) {
   let regexp = /[a-zA-Z]/;
   if (!val && val !== 0) return "";
-  if (Number(val) === 0) return "零元整";
+  if (Number(val) === 0) return "零元";
   if (regexp.test(val)) return "数字较大溢出";
   const value = val;
   if (val < 0) {
@@ -253,7 +253,7 @@ export function getAmountChinese(val: any) {
       if (parseInt(num)) res += NUMBER[num] + D_UNIT[i];
     }
   } else {
-    res += "整";
+    res += "";
   }
   if (value < 0) res = "负数" + res;
   return res;

@@ -51,8 +51,10 @@ export default defineComponent({
               ...res,
             },
             function (res: any) {
-              console.log(res, "支付结果");
               if (res.err_msg == "get_brand_wcpay_request:ok") {
+                // 使用以上方式判断前端返回,微信团队郑重提示：
+                //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+
                 VueRouter.push(
                   `/successPayment?orderId=${orderId}&type=${type}`
                 );
@@ -64,8 +66,8 @@ export default defineComponent({
           );
         }
         if (typeof WeixinJSBridge == "undefined") {
-          if (document.addEventListener) {
-            document.addEventListener(
+          if ((document as any).addEventListener) {
+            (document as any).addEventListener(
               "WeixinJSBridgeReady",
               onBridgeReady,
               false
@@ -186,7 +188,7 @@ export default defineComponent({
         infoData.guide && (
           <div class={[style["notes"], style["card"]]}>
             <div class={[style["h3"], style["border_b"]]}>祈福须知</div>
-            <div class={[style["notes-c"]]} v-html={infoData.guide}></div>
+            <div class={[style["notes-c"]]} v-html={infoData.guide.replace(/\n/g, '<br />')}></div>
           </div>
         )
       );
