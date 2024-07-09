@@ -44,7 +44,42 @@ export default defineComponent({
         anonymity: +checked.value,
       };
       setPayOrderApi(params).then((res) => {
-        VueRouter.push(`/successPayment?orderId=${orderId}&type=${type}`);
+        function onBridgeReady() {
+          WeixinJSBridge.invoke(
+            "getBrandWCPayRequest",
+            {
+              ...res,
+            },
+            function (res: any) {
+              console.log(res, "支付结果");
+              if (res.err_msg == "get_brand_wcpay_request:ok") {
+                VueRouter.push(
+                  `/successPayment?orderId=${orderId}&type=${type}`
+                );
+              }
+              if (res.err_msg == "get_brand_wcpay_request:fail") {
+                Toast("支付失败");
+              }
+            }
+          );
+        }
+        if (typeof WeixinJSBridge == "undefined") {
+          if (document.addEventListener) {
+            document.addEventListener(
+              "WeixinJSBridgeReady",
+              onBridgeReady,
+              false
+            );
+          } else if ((document as any).attachEvent) {
+            (document as any).attachEvent("WeixinJSBridgeReady", onBridgeReady);
+            (document as any).attachEvent(
+              "onWeixinJSBridgeReady",
+              onBridgeReady
+            );
+          }
+        } else {
+          onBridgeReady();
+        }
       });
     };
 

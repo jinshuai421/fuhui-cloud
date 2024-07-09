@@ -134,5 +134,6 @@ declare module 'vconsole';
 declare const aplus_queue: any[];
 
 declare const Aegis: any;
+declare const WeixinJSBridge: any;
 
 declare type AppCodeType = 'hsgxlk' | 'gxlk' | 'gxlk1.0' | 'test'
