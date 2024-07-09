@@ -39,6 +39,12 @@ export default defineComponent({
     });
 
     const handlePay = () => {
+      if(!formData.name){
+        return Toast('请输入您的姓名')
+      }
+      if(!formData.phone){
+        return Toast('请输入您的联系方式')
+      }
       const params = {
         ...formData,
         anonymity: +checked.value,

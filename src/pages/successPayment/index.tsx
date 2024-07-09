@@ -28,8 +28,8 @@ export default defineComponent({
     onMounted(() => {
       getSecondApi(type).then((res) => {
         Object.assign(infoTypeData, res);
-        getConfigApi(res.typeCode || type).then((res) => {
-          Object.assign(typeData, res);
+        getConfigApi(res.typeCode || type).then((e) => {
+          Object.assign(typeData, e);
         });
       });
 
@@ -56,7 +56,7 @@ export default defineComponent({
               <div class={[style["info-li"]]}>
                 <div>
                   <span>祈福内容</span>
-                  <span class={[style.bold]}>{infoTypeData}</span>
+                  <span class={[style.bold]}>{infoTypeData.name}</span>
                 </div>
                 <div>
                   <span>供奉时长</span>
