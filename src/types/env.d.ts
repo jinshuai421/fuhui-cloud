@@ -140,3 +140,5 @@ declare type AppCodeType = 'hsgxlk' | 'gxlk' | 'gxlk1.0' | 'test'
 
 
 declare const WeixinJSBridge: any;
+
+declare module 'vue-seamless-scroll'

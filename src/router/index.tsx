@@ -31,6 +31,13 @@ const router = createRouter({
         default: () => import("../pages/successPayment/index"),
       },
     },
+    {
+      path: "/virtues",
+      name: "功德",
+      components: {
+        default: () => import("../pages/virtues/index"),
+      },
+    },
 
     // {
     //   path: "/login",
