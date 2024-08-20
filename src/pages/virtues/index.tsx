@@ -1,8 +1,14 @@
 import Page from "@/components/Page";
 
 import style from "./index.module.less";
+import QRCode from "qrcode";
 
 import { defineComponent, reactive, onMounted, ref, computed } from "vue";
+import { getScreenInfoApi } from "@/api";
+import { Swipe, SwipeItem } from "vant";
+import ImgBg1 from "./assets/img.png";
+import ImgBg2 from "./assets/img2.jpg";
+import ImgBg3 from "./assets/img3.jpg";
 
 export default defineComponent({
   setup(props, {}) {
@@ -12,26 +18,36 @@ export default defineComponent({
 
     const isScroll = ref(false);
 
-    const list = ref(
-      Array(20).fill({
-        name: "匿名施主",
-      })
-    );
+    const list = ref([]);
+    const data = ref<any>({});
+    const qrUrl = ref("");
 
     const scrollH = ref(0);
     const scrollItemH = ref(0);
 
     onMounted(() => {
-      convertDate();
-      scrollH.value = (document.querySelector(".scroll") as any).offsetHeight;
-      scrollItemH.value = (
-        document.querySelector(".scroll-item") as any
-      ).offsetHeight;
-
-      if (scrollH.value < scrollItemH.value) {
-        isScroll.value = true;
-      }
+      // convertDate();
+      initData();
+      setInterval(() => {
+        initData();
+      }, 2000);
     });
+
+    const initData = () => {
+      getScreenInfoApi({}).then((res) => {
+        list.value = res.donationScreenVOList;
+        data.value = res;
+        generateQRCode(res.donationUrl);
+        scrollH.value = (document.querySelector(".scroll") as any).offsetHeight;
+        scrollItemH.value = (
+          document.querySelector(".scroll-item") as any
+        )?.offsetHeight;
+
+        if (scrollH.value < scrollItemH.value) {
+          isScroll.value = true;
+        }
+      });
+    };
 
     const convertDate = () => {
       const date: any = new Date();
@@ -51,29 +67,36 @@ export default defineComponent({
     const renderHead = () => {
       return (
         <div class={[style.head]}>
+          <Swipe
+            autoplay={5000}
+            showIndicators={false}
+            class={[style.swipe]}
+          >
+            <SwipeItem class={[style.swipeItem]}>
+              <img src={ImgBg1} alt="" />
+            </SwipeItem>
+            <SwipeItem class={[style.swipeItem]}>
+              <img src={ImgBg2} alt="" />
+            </SwipeItem>
+            <SwipeItem class={[style.swipeItem]}>
+              <img src={ImgBg3} alt="" />
+            </SwipeItem>
+          </Swipe>
           <div class={[style.head_t]}>华陵云</div>
           <div class={[style.head_r]}>
-            <p>
-              佛历：{buddhistYear.value}年{moment().format("MM月DD日")}
-            </p>
-            <p>农历：甲辰年庚午月癸丑日属龙</p>
+            <p>佛历：{data.value.buddhistCalendar}</p>
+            <p>农历：{data.value.chineseCalendar}</p>
           </div>
         </div>
       );
     };
 
-    const optionSetting = computed(() => {
-      return {
-        step: 0.15, // 数值越大速度滚动越快
-        limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length
-        hoverStop: true, // 是否开启鼠标悬停stop
-        direction: 1, // 0向下 1向上 2向左 3向右
-        openWatch: true, // 开启数据实时监控刷新dom
-        singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction => 0/1
-        singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction => 2/3
-        waitTime: 1000, // 单步运动停止的时间(默认值1000ms)
-      };
-    });
+    const generateQRCode = (data: string) => {
+      QRCode.toDataURL(data, { errorCorrectionLevel: "H" }, (err, url) => {
+        if (err) console.error(err);
+        qrUrl.value = url;
+      });
+    };
 
     const renderContent = () => {
       return (
@@ -82,18 +105,18 @@ export default defineComponent({
           <div class={[style.content_bg]}>
             <div class={[style.content_t]}>
               <div class={[style.content_t_ewm]}>
-                <img src=""></img>
+                <img src={qrUrl.value}></img>
                 <p>扫码捐功德</p>
               </div>
               <div class={[style.content_t_num]}>
                 <div>
-                  <span>666</span>
+                  <span>{data.value.donatedCount}</span>
                   <p>位</p>
                 </div>
                 <p>已捐赠</p>
               </div>
               <div class={[style.content_t_ewm]}>
-                <img src=""></img>
+                <img src={qrUrl.value}></img>
                 <p>扫码捐功德</p>
               </div>
             </div>
@@ -112,22 +135,22 @@ export default defineComponent({
                       : {}
                   }
                 >
-                  {list.value.map((item, i) => {
+                  {list.value.map((item: any, i) => {
                     return (
                       <div class={[style.li]}>
                         <div>{item.name}</div>
-                        <div>{i}</div>
-                        <div>{item.name}</div>
+                        <div>{item.payerTotal}元</div>
+                        <div>{item.blessing}</div>
                       </div>
                     );
                   })}
                   {isScroll.value &&
-                    list.value.map((item, i) => {
+                    list.value.map((item: any, i) => {
                       return (
                         <div class={[style.li]}>
                           <div>{item.name}</div>
-                          <div>{i}</div>
-                          <div>{item.name}</div>
+                          <div>{item.payerTotal}元</div>
+                          <div>{item.blessing}</div>
                         </div>
                       );
                     })}

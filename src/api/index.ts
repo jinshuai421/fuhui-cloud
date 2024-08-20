@@ -47,3 +47,10 @@ export const getOrderInfoApi = (orderId: any) => {
 export const setPayOrderApi = (data: any) => {
   return postAction(`/api/temple/payOrder`, data);
 };
+
+/**
+ * @description 大屏展示信息
+ */
+export const getScreenInfoApi = (data: any) => {
+  return getAction(`/api/temple/screen/info`, data);
+};
