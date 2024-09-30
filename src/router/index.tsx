@@ -38,6 +38,13 @@ const router = createRouter({
         default: () => import("../pages/virtues/index"),
       },
     },
+    {
+      path: "/screen",
+      name: "大屏",
+      components: {
+        default: () => import("../pages/screen/index"),
+      },
+    },
 
     // {
     //   path: "/login",
